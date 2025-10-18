@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
-  imports: [],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrls: ['./header.css'] // ✅ plural
 })
-export class Header {
-
-}
+export class HeaderComponent { } // ✅ nome ajustado
