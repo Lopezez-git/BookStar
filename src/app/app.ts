@@ -1,12 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from "./header/header";
+import { HeaderComponent } from './header/header'; // 👈 nome e caminho ajustados
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header],
+  standalone: true,
+  imports: [RouterOutlet, HeaderComponent], // 👈 use o nome completo
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 export class App {
   protected readonly title = signal('BookStar');
