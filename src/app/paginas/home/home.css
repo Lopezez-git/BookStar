@@ -4,52 +4,51 @@
   box-sizing: border-box;
 }
 
-html, body{
+html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-}
-
-.home {
-  position: relative;
-  height: 100vh; /* ocupa a tela toda */
-  width: 100%;
-  background-color: #EEEEDD;
-  overflow: hidden;
   font-family: 'Poppins', sans-serif;
 }
 
-
-
-/* fundo com a imagem "STAR" */
+/* 🔥 Fundo fixo com imagem de estrelas */
 .background-stars {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('/background-star.png') repeat center ;
-  background-size: cover;
-  opacity: 0.1;
-  z-index: 0;
-  animation: moveStars 60s linear infinite; /* movimento suave opcional */
+  background-color: #EEEEDD; /* mesma cor que a home */
+  background-image: url('/background-star.png');
+  background-repeat: repeat;
+  background-size: 400px auto;
+  background-position: 0 0;
+  opacity: 0.3; /* visível sem “branco estranho” */
+  z-index: -1;
 }
 
-/* conteúdo principal */
-.home-content {
+/* Conteúdo rolável */
+.home {
   position: relative;
-  height: 100%;
+  min-height: 200vh; /* só pra testar o scroll */
+  background-color: #EEEEDD; /* mesma cor do fundo das estrelas */
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Conteúdo principal */
+.home-content {
+  height: 100vh;
   display: flex;
-  align-items: center;       /* centraliza verticalmente */
+  align-items: center;
   justify-content: flex-start;
-  padding-left: 8rem;      /* distância da esquerda */
-  z-index: 3;
+  padding-left: 8rem;
   text-align: left;
 }
 
-/* texto */
+/* Texto */
 .home-text {
-  color: #1a1a1a;
+  color: #100f0f;
   max-width: 500px;
 }
 
@@ -60,7 +59,7 @@ html, body{
   line-height: 1.3;
 }
 
-/* botão */
+/* Botão */
 .btn-signup {
   background-color: #0b2d1e;
   color: #f5f5f5;
@@ -77,7 +76,7 @@ html, body{
   transform: translateY(-3px);
 }
 
-/* responsivo */
+/* Responsivo */
 @media (max-width: 768px) {
   .home-content {
     justify-content: center;
