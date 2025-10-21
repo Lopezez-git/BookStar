@@ -2,11 +2,11 @@
     <p>Pagina de cadastro</p>
 
     <div>
-        <p>Nome: <input type="text"></p>
-        <p>Username: <input type="text"></p>
-        <p>Email: <input type="email"></p>
-        <p>Senha: <input type="password"></p>
+        <p>Nome: <input type="text" [(ngModel)] = "nome" name = "nome"></p>
+        <p>Username: <input type="text" [(ngModel)] = "username" name="username"></p>
+        <p>Email: <input type="email" [(ngModel)] = "email" name="email"></p>
+        <p>Senha: <input type="password" [(ngModel)] = senha name = "senha"></p>
         
-        <button>Cadastrar-se</button>
+        <button (click)="cadastrarUsuario()">Cadastrar-se</button>
     </div>
 </main>
