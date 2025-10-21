@@ -1,12 +1,22 @@
-<main>
-    <p>Pagina de cadastro</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Página de Cadastro</title>
+  <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+  <main>
+    <div class="form-box">
+      <p class="titulo">Página de cadastro</p>
 
-    <div>
-        <p>Nome: <input type="text" [(ngModel)] = "nome" name = "nome"></p>
-        <p>Username: <input type="text" [(ngModel)] = "username" name="username"></p>
-        <p>Email: <input type="email" [(ngModel)] = "email" name="email"></p>
-        <p>Senha: <input type="password" [(ngModel)] = senha name = "senha"></p>
-        
-        <button (click)="cadastrarUsuario()">Cadastrar-se</button>
+      <p>Nome: <input type="text" name="Nome"></p>
+      <p>Username: <input type="text" name="Usuario"></p>
+      <p>Email: <input type="email" name="Email"></p>
+      <p>Senha: <input type="password" name="Senha"></p>
+
+      <button>Cadastrar-se</button>
     </div>
-</main>
+  </main>
+</body>
+</html>
