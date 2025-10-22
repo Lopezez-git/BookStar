@@ -2,7 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: 'Georgia', serif;
-  background-color: #E8E4D9;
+  background-color: #EEEEDD;
   overflow: hidden;
 }
 
@@ -122,7 +122,7 @@ button {
 }
 
 button:hover {
-  background-color: #DDD9CB;
+  background-color: #EEEEDD;
 }
 
 .login-link {
