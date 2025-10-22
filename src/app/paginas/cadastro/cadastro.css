@@ -1,80 +1,173 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Corpo da página */
+/* Página ocupa toda a tela, sem rolagem */
 html, body {
   height: 100%;
-  font-family:  'sans-serif';
-  color: #EEEEDD;
+  font-family: 'Georgia', serif;
+  background-color: #EEEEDD;
+  margin: 0;
+  overflow: hidden; /* impede scroll */
 }
 
-/* Centralização com flexbox */
-body {
+/* Fundo com textura */
+.background-pattern {
+  position: fixed;
+  inset: 0;
+  background-image: url('/background-star.png');
+  background-size: contain;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+/* Header fixo no topo */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #1B2F26;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
-/* Caixa de cadastro */
+/* Logo */
+.logo img {
+  height: 140px;
+  width: auto;
+}
+
+/* Main ocupa toda a tela (centralizado) */
+main {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Caixa do formulário */
 .form-box {
   background-color: #1B2F26;
-  padding: 40px;
+  padding: 45px 50px;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  width: 320px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 400px;
 }
 
 /* Título */
 .titulo {
-  font-size: 35px;
+  color: #EEEEDD;
   text-align: center;
+  font-size: 28px;
   margin-bottom: 30px;
 }
 
-/* Campos */
-.form-box p {
-  margin-bottom: 15px;
-  font-size: 14px;
+/* Inputs */
+.form-field {
+  margin-bottom: 20px;
 }
 
-input {
+.form-field input {
   width: 100%;
-  padding: 10px;
-  border: none;
+  padding: 12px 14px;
+  background-color: #2D4339;
+  border: 1px solid #3A5046;
   border-radius: 6px;
-  background-color: #3a5046;
-  color: #ffffff;
+  color: #EEEEDD;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+/* Placeholder com opacidade */
+.form-field input::placeholder {
+  color: rgba(238, 238, 221, 0.6);
   font-size: 14px;
 }
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 60px;
+
+.form-field input:focus {
+  outline: none;
+  background-color: #364D42;
+  border-color: #4A6357;
 }
 
-main {
-  padding-top: 80px; /* maior que a altura da header */
+/* Checkbox */
+.checkbox-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 20px 0;
 }
 
+.checkbox-field input {
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-field label {
+  color: #EEEEDD;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.checkbox-field a {
+  color: #EEEEDD;
+  text-decoration: underline;
+}
 
 /* Botão */
 button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   background-color: #EEEEDD;
-  color: #000000;
+  color: #1B2F26;
   border: none;
   border-radius: 6px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s;
 }
 
 button:hover {
-  background-color: #395146;
+  background-color: #DDD9CB;
+}
+
+/* Link de login */
+.login-link {
+  color: #EEEEDD;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #EEEEDD;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  color: #DDD9CB;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .form-box {
+    padding: 35px 25px;
+  }
+
+  .titulo {
+    font-size: 24px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 15px;
+  }
 }
