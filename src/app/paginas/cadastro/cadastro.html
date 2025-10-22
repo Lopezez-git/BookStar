@@ -10,12 +10,12 @@
     <div class="form-box">
       <p class="titulo">Página de cadastro</p>
 
-      <p>Nome: <input type="text" name="Nome"></p>
-      <p>Username: <input type="text" name="Usuario"></p>
-      <p>Email: <input type="email" name="Email"></p>
-      <p>Senha: <input type="password" name="Senha"></p>
+      <p>Nome: <input type="text" [(ngModel)] = 'nome' name="nome"></p>
+      <p>Username: <input type="text"[(ngModel)] = 'username' name="usuario"></p>
+      <p>Email: <input type="email" [(ngModel)] = 'email' name="email"></p>
+      <p>Senha: <input type="password" [(ngModel)] = 'senha' name="senha"></p>
 
-      <button>Cadastrar-se</button>
+      <button (click)="cadastrarUsuario()">Cadastrar-se</button>
     </div>
   </main>
 </body>
