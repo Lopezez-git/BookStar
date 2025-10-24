@@ -12,47 +12,19 @@
 
     <form (ngSubmit)="cadastrarUsuario()">
       <div class="form-field">
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          placeholder="Nome"
-          [(ngModel)]="nome"
-          required
-        />
+        <input type="text" id="nome" name="nome" placeholder="Nome" [(ngModel)]="nome" required />
       </div>
 
       <div class="form-field">
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Username"
-          [(ngModel)]="username"
-          required
-        />
+        <input type="text" id="username" name="username" placeholder="Username" [(ngModel)]="username" required />
       </div>
 
       <div class="form-field">
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Endereço de email"
-          [(ngModel)]="email"
-          required
-        />
+        <input type="email" id="email" name="email" placeholder="Endereço de email" [(ngModel)]="email" required />
       </div>
 
       <div class="form-field">
-        <input
-          type="password"
-          id="senha"
-          name="senha"
-          placeholder="Senha"
-          [(ngModel)]="senha"
-          required
-        />
+        <input type="password" id="senha" name="senha" placeholder="Senha" [(ngModel)]="senha" required />
       </div>
 
       <div class="checkbox-field">
