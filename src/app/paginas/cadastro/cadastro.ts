@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './cadastro.html',
   styleUrls: ['./cadastro.css']
 })
@@ -29,6 +30,8 @@ export class Cadastro {
       email: this.email,
       senha: this.senha
     }
+
+    console.log(novoUsuario);
 
     this.http.post('http://localhost:5010/usuario/cadastro', novoUsuario).subscribe({
       next: (res) => {
