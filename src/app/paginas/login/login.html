@@ -1,31 +1,44 @@
+<main>
+  <div class="login-box">
+    <img src="logo.png" alt="Logo Starback" class="logo">
+    <p class="tituloE">Entrar</p>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Login - Starback</title>
-  <link rel="stylesheet" href="login.css">
-</head>
-<body>
-  <main>
-    <div class="login-box">
-      <img src="logo.png" alt="Logo Starback" class="logo">
-      <p class="tituloE">Entrar</p>
+    <!-- 🔥 formulário Angular -->
+    <form (ngSubmit)="fazerLogin()">
+      <p>
+        Email:
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Digite seu email"
+          required
+        />
+      </p>
 
-      <p>Email: <input type="email" name="email"></p>
-      <p>Senha: <input type="password" name="senha"></p>
+      <p>
+        Senha:
+        <input
+          type="password"
+          name="senha"
+          [(ngModel)]="senha"
+          placeholder="Digite sua senha"
+          required
+        />
+      </p>
 
       <label class="termos">
-        <input type="checkbox" name="aceite">
-        Ao se inscrever, você aceita os Termos de Uso do Starback e reconhece que nossa Política de Privacidade se aplica.
+        <input type="checkbox" name="aceite" required />
+        Ao se inscrever, você aceita os Termos de Uso do Starback e reconhece
+        que nossa Política de Privacidade se aplica.
       </label>
 
-      <button>Entrar</button>
+      <button type="submit">Entrar</button>
 
       <p class="link-cadastro">
-        Se ainda não tem conta <a routerLink="/cadastro">Cadastre-se</a>
+        Se ainda não tem conta
+        <a routerLink="/cadastro">Cadastre-se</a>
       </p>
-    </div>
-  </main>
-</body>
-</html>
+    </form>
+  </div>
+</main>

@@ -1,13 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { LivrosService } from '../../services/livros.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [RouterLink, CommonModule],
   templateUrl: './home.html',
-  styleUrl: './home.css',
-  standalone: true
+  styleUrls: ['./home.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  livrosPopulares: any[] = [];
+  livrosPremiados: any[] = [];
 
+  constructor(private livrosService: LivrosService) {}
+
+  ngOnInit() {
+    this.carregarLivros();
+  }
+
+  carregarLivros() {
+    // Livros populares
+    this.livrosService.buscarLivros('best sellers livros populares').subscribe({
+      next: (res) => {
+        this.livrosPopulares = (res.items || []).filter(
+          (livro: any) =>
+            livro.volumeInfo?.imageLinks?.thumbnail &&
+            livro.volumeInfo?.title &&
+            livro.volumeInfo?.maturityRating !== 'MATURE'
+        );
+      },
+      error: (err) => console.error('Erro ao buscar livros populares:', err)
+    });
+
+    // Livros premiados
+    this.livrosService.buscarLivros('livros premiados ganhadores de prêmios').subscribe({
+      next: (res) => {
+        this.livrosPremiados = (res.items || []).filter(
+          (livro: any) =>
+            livro.volumeInfo?.imageLinks?.thumbnail &&
+            livro.volumeInfo?.title &&
+            livro.volumeInfo?.maturityRating !== 'MATURE'
+        );
+      },
+      error: (err) => console.error('Erro ao buscar livros premiados:', err)
+    });
+  }
 }
