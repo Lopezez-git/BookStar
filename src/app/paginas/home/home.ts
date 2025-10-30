@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   carregarLivros() {
     // Livros populares
-    this.livrosService.buscarLivros('suspence').subscribe({
+    this.livrosService.buscarLivros('suspence').subscribe({ // <== filtros
       next: (res) => {
         this.livrosPopulares = (res.items || []).filter(
           (livro: any) =>
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     });
 
     // Livros premiados
-    this.livrosService.buscarLivros('disney').subscribe({
+    this.livrosService.buscarLivros('disney').subscribe({ //<== filtros
       next: (res) => {
         this.livrosPremiados = (res.items || []).filter(
           (livro: any) =>
