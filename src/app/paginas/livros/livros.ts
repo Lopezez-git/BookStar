@@ -2,10 +2,26 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-livros',
-  imports: [],
+  standalone: true,
   templateUrl: './livros.html',
-  styleUrl: './livros.css'
+  styleUrls: ['./livros.css']
 })
 export class Livros {
-
+  livros = [
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' },
+    { imagem: '' }
+  ];
 }

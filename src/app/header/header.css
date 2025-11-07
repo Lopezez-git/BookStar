@@ -108,3 +108,16 @@ html, body {
 .icons img:hover {
   transform: scale(1.1);
 }
+
+/*remove a borda do botão, fundo, padding e muda o cursor*/
+.btn-go-livros {
+  border: none;      
+  background: none;   
+  padding: 0;         
+  cursor: pointer;    
+}
+
+.btn-go-livros img {
+  width: 33px;   
+  height: auto;
+}
