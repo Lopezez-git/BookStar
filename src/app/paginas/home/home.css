@@ -143,46 +143,12 @@ html, body {
   background-color: #DDD;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  flex: 0 0 auto;
-  overflow: hidden;
-}
-
-/* Imagem ocupa todo o quadrado */
-.book-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.2s ease, opacity 0.1s ease;
-}
-
-/* leve zoom ao passar o mouse */
-.book-item:hover img {
-  transform: scale(1.05);  
-  opacity: 0.9;            
 }
 
 .book-item.placeholder {
   background: linear-gradient(135deg, #E0E0E0 25%, #F5F5F5 100%);
   animation: pulse 1.5s infinite ease-in-out;
 }
-
-/* Área geral do carrossel */
-.books-carousel-section {
-  overflow: hidden;
-  width: 100%;
-  padding: 30px 0;
-  background: transparent;
-  position: relative;
-}
-
-/* Faixa que contém os livros */
-.carousel-track {
-  display: flex;
-  gap: 20px;
-  animation: scrollLeft 25s linear infinite;
-}
-
 
 /* Efeito de pulsar nos placeholders */
 @keyframes pulse {
@@ -237,4 +203,27 @@ html, body {
   font-size: 1rem;
   color: #F8F8F5;
   font-weight: 500;
+}
+/* Faixa do carrossel vira linha contínua */
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  animation: scrollLeft 25s linear infinite;
+  will-change: transform;
+}
+
+/* Para garantir rolagem suave */
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Animação do carrossel (movendo para a esquerda sem parar) */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* metade porque duplicamos os livros */
+  }
 }
