@@ -3,7 +3,7 @@ import { HomeComponent } from './paginas/home/home';
 import { Cadastro } from './paginas/cadastro/cadastro';
 import { LoginComponent } from './paginas/login/login';
 import { LivrosComponent } from './paginas/livros/livros';
-import { Livro } from './paginas/livro/livro';
+import { LivroComponent } from './paginas/livro/livro';
 import { AuthGuard } from './auth.guard';
 import { Perfil } from './paginas/perfil/perfil';
 
@@ -12,7 +12,7 @@ export const routes: Routes = [
     { path: 'cadastro', component: Cadastro },
     { path: 'login', component: LoginComponent },
     { path: 'livros', component: LivrosComponent },
-    { path: 'livro', component: Livro },
+    { path: 'livro', component: LivroComponent },
     { path: 'perfil', component: Perfil, canActivate: [AuthGuard] }
 
 ];

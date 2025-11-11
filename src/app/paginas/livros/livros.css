@@ -1,3 +1,19 @@
+.pagina-livros {
+  min-height: 100vh;
+  padding: 2rem;
+
+  /* DUAS CAMADAS DE FUNDO */
+  background:
+    linear-gradient(#EEEEDD, rgba(224, 224, 211, 0.829)), /* controla opacidade */
+    url('/background-star.png'); /* imagem */
+    
+  background-size: 450px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+
+/* grid do seu amigo */
 .livros-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -7,6 +23,7 @@
 
 .livro {
   text-align: center;
+  cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
 
@@ -22,22 +39,13 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.livro-info {
+.livro h3 {
+  font-weight: 700;
+  font-size: 0.95rem;
   margin-top: 0.5rem;
 }
 
-.livro-info h3 {
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.livro-info p {
+.livro p {
   font-size: 0.85rem;
-  color: #555;
-}
-
-.loading, .erro {
-  text-align: center;
-  padding: 1.5rem;
-  color: #666;
+  color: #444;
 }

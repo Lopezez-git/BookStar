@@ -1,0 +1,23 @@
+.livro-detalhe {
+  display: flex;
+  gap: 2rem;
+  padding: 3rem;
+  background: #102015;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.capa {
+  width: 280px;
+  border-radius: 6px;
+}
+
+.conteudo h1 {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+.descricao {
+  margin-top: 1rem;
+  line-height: 1.6;
+}

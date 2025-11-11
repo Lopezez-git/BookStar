@@ -1,12 +1,9 @@
-<p>livro works!</p>
-<main>
-      <div class="background-pattern"></div>
+<div class="livro-detalhe" *ngIf="livro">
+  <img [src]="livro.imageLinks?.thumbnail" class="capa">
 
-  <header>
-    <div class="logo">
-      <img src="/assets/logo.png" alt="Starbook Logo">
-    </div>
-  </header>
-
-  
-</main>
+  <div class="conteudo">
+    <h1>{{ livro.title }}</h1>
+    <h3>{{ livro.authors?.join(', ') }}</h3>
+    <p class="descricao">{{ livro.description }}</p>
+  </div>
+</div>
