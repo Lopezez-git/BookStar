@@ -1,9 +1,92 @@
-<div class="livro-detalhe" *ngIf="livro">
-  <img [src]="livro.imageLinks?.thumbnail" class="capa">
+<div class="pagina-detalhes">
+  <button class="btn-voltar" (click)="voltar()">← Voltar</button>
 
-  <div class="conteudo">
-    <h1>{{ livro.title }}</h1>
-    <h3>{{ livro.authors?.join(', ') }}</h3>
-    <p class="descricao">{{ livro.description }}</p>
+  <div *ngIf="carregando" class="loading">Carregando...</div>
+  <div *ngIf="erro" class="erro">{{ erro }}</div>
+
+  <div *ngIf="!carregando && !erro && livro" class="conteudo">
+    <!-- Seção Principal -->
+    <div class="secao-principal">
+      <!-- Capa do Livro -->
+      <div class="capa-container">
+        <img [src]="getImagemLivro()" [alt]="getTitulo()" class="capa-livro">
+      </div>
+
+      <!-- Informações e Ações -->
+      <div class="info-container">
+        <h1 class="titulo-livro">{{ getTitulo() }}</h1>
+
+        <!-- Ícones de Status -->
+        <div class="status-icons">
+          <button class="icon-btn" title="Visualizado">
+            <span class="icon">👁️</span>
+          </button>
+          <button 
+            class="icon-btn" 
+            [class.active]="livroFinalizado"
+            (click)="toggleFinalizado()"
+            title="Marcar como concluído">
+            <span class="icon">⏱️</span>
+            <span class="label">{{ livroFinalizado ? 'Livro concluído' : 'Marcar concluído' }}</span>
+          </button>
+          <button class="icon-btn" title="Favorito">
+            <span class="icon">♥️</span>
+          </button>
+        </div>
+
+        <!-- Avaliação com Estrelas -->
+        <div class="avaliacao-section">
+          <h3>Sua Avaliação</h3>
+          <div class="estrelas">
+            <span 
+              *ngFor="let star of getRatingArray()"
+              class="estrela"
+              [class.filled]="star <= (hoverRating || avaliacaoUsuario)"
+              (click)="setRating(star)"
+              (mouseenter)="setHoverRating(star)"
+              (mouseleave)="resetHoverRating()">
+              ★
+            </span>
+          </div>
+        </div>
+
+        <!-- Descrição do Livro -->
+        <div class="descricao-section">
+          <h3>Sobre o Livro</h3>
+          <p class="descricao" [innerHTML]="getDescricao()"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção de Comentário -->
+    <div class="secao-comentario">
+      <h3>Seu Comentário</h3>
+      <textarea 
+        class="comentario-input"
+        [(ngModel)]="comentarioUsuario"
+        placeholder="Comentário muito babado sobre o livro"
+        rows="5">
+      </textarea>
+      <button class="btn-salvar" (click)="salvarAvaliacao()">
+        Salvar Avaliação
+      </button>
+    </div>
+
+    <!-- Informações do Autor -->
+    <div class="secao-autor">
+      <h2>Sobre o Autor</h2>
+      <div class="autor-info">
+        <div class="autor-foto">
+          <div class="placeholder-foto">📚</div>
+        </div>
+        <div class="autor-texto">
+          <h3>{{ getAutores() }}</h3>
+          <p class="autor-bio">
+            {{ getAutores() }} é o autor deste livro. 
+            Mais informações sobre o autor podem ser adicionadas aqui quando disponíveis.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
