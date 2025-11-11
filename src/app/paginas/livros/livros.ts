@@ -1,55 +1,31 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { LivrosService } from '../../services/livros.service';
-
-interface VolumeInfo {
-  title: string;
-  authors?: string[];
-  imageLinks?: {
-    thumbnail?: string;
-    smallThumbnail?: string;
-    medium?: string;
-    large?: string;
-  };
-  previewLink?: string;
-  description?: string;
-  publishedDate?: string;
-  publisher?: string;
-  maturityRating?: string;
-}
-
-interface BookItem {
-  id: string;
-  volumeInfo: VolumeInfo;
-}
 
 @Component({
   selector: 'app-livros',
   standalone: true,
-  imports: [CommonModule, NgIf, NgFor],
+  imports: [CommonModule],
   templateUrl: './livros.html',
   styleUrls: ['./livros.css'],
   providers: [LivrosService]
 })
 export class LivrosComponent implements OnInit {
-  @Input() tema: string = 'best sellers';
-  @Input() maxResults: number = 40;
-  @Input() filtrarMature: boolean = true;
-
-  livros: BookItem[] = [];
+  livros: any[] = [];
   carregando = false;
   erro = '';
 
   constructor(private livrosService: LivrosService) {}
 
   ngOnInit(): void {
-    this.buscarLivros(this.tema);
+    this.buscarLivros('suspence');
   }
 
   buscarLivros(termo: string): void {
     this.carregando = true;
-    this.livrosService.buscarLivros(termo, this.maxResults).subscribe({
+    this.livrosService.buscarLivros(termo, 40).subscribe({
       next: (res) => {
+        console.log(res);
         this.livros = res.items || [];
         this.carregando = false;
       },
@@ -60,8 +36,7 @@ export class LivrosComponent implements OnInit {
     });
   }
 
-  getImagemLivro(volumeInfo: VolumeInfo): string {
-    const img = volumeInfo.imageLinks;
-    return img?.large || img?.medium || img?.thumbnail || img?.smallThumbnail || 'assets/placeholder-book.jpg';
+  getImagemLivro(livro: any): string {
+    return livro.volumeInfo?.imageLinks?.thumbnail || 'assets/placeholder-book.jpg';
   }
 }

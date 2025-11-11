@@ -1,26 +1,14 @@
 <div class="pagina-livros">
-  <div class="secao-livros">
-    <h2 class="titulo-secao">📖 Suspense</h2>
-    <app-livros tema="suspense" [maxResults]="12"></app-livros>
-  </div>
+  <h2 class="titulo-secao">📖 Livros</h2>
 
-  <div class="secao-livros">
-    <h2 class="titulo-secao">🏰 Disney</h2>
-    <app-livros tema="disney" [maxResults]="12"></app-livros>
-  </div>
+  <div *ngIf="carregando">Carregando...</div>
+  <div *ngIf="erro">{{ erro }}</div>
 
-  <div class="secao-livros">
-    <h2 class="titulo-secao">🚀 Ficção Científica</h2>
-    <app-livros tema="ficção científica" [maxResults]="12"></app-livros>
-  </div>
-
-  <div class="secao-livros">
-    <h2 class="titulo-secao">💕 Romance</h2>
-    <app-livros tema="romance" [maxResults]="12"></app-livros>
-  </div>
-
-  <div class="secao-livros">
-    <h2 class="titulo-secao">💻 Tecnologia</h2>
-    <app-livros tema="programação javascript" [maxResults]="12"></app-livros>
+  <div class="livros-container" *ngIf="!carregando && !erro">
+    <div class="livro" *ngFor="let livro of livros">
+      <img [src]="getImagemLivro(livro)" alt="{{ livro.volumeInfo.title }}">
+      <h3>{{ livro.volumeInfo.title }}</h3>
+      <p>{{ livro.volumeInfo.authors?.join(', ') }}</p>
+    </div>
   </div>
 </div>
