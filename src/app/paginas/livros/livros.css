@@ -1,108 +1,28 @@
-.library-container {
-  padding: 20px;
-  background-color: #1a1a1a;
-  min-height: 100vh;
-  width: 100%;
-}
 
-.loading {
-  text-align: center;
-  padding: 60px 20px;
-  color: #00bcd4;
+body {
+  margin: 0;
+  background-color: #eeeaea;
 }
-
-.spinner {
-  border: 4px solid rgba(0, 188, 212, 0.1);
-  border-top: 4px solid #00bcd4;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 20px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.erro {
-  text-align: center;
-  padding: 40px 20px;
-  color: #ff6b6b;
-  font-size: 16px;
-}
-
-.books-grid {
+.livros-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 20px;
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
+  padding: 30px;
+  justify-items: center;
 }
 
-.book-card {
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 8px;
+.livro {
+  width: 150px;
+  height: 220px;
+  background-color: #ddd;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  background-color: #2a2a2a;
-  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-.book-card:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-}
-
-.book-cover {
+.livro img {
   width: 100%;
-  height: auto;
-  min-height: 200px;
-  aspect-ratio: 2/3;
+  height: 100%;
   object-fit: cover;
-  display: block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-/* Responsivo para tablets */
-@media (max-width: 1024px) {
-  .books-grid {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 18px;
-  }
-}
-
-/* Responsivo para mobile */
-@media (max-width: 768px) {
-  .library-container {
-    padding: 15px;
-  }
-
-  .books-grid {
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 15px;
-  }
-
-  .book-card:hover {
-    transform: translateY(-3px) scale(1.03);
-  }
-}
-
-/* Responsivo para mobile pequeno */
-@media (max-width: 480px) {
-  .books-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 12px;
-  }
-
-  .library-container {
-    padding: 10px;
-  }
-  
-  .book-cover {
-    min-height: 150px;
-  }
-}
