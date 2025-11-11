@@ -10,7 +10,7 @@ export class LivrosService {
 
   constructor(private http: HttpClient) {}
 
-  buscarLivros(termo: string, maxResults: number = 40): Observable<any> {
+  buscarLivros(termo: string, maxResults: number = 10): Observable<any> {
   const requests = [];
   const pageSize = 10; // a API só retorna 10 por vez
   const totalPages = Math.ceil(maxResults / pageSize);
