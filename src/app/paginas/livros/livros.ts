@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LivrosService } from '../../services/livros.service';
 
 @Component({
   selector: 'app-livros',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './livros.html',
   styleUrls: ['./livros.css'],
   providers: [LivrosService]
