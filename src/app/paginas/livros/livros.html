@@ -4,7 +4,7 @@
 
   <div class="livros-container" *ngIf="!carregando && !erro">
     <div class="livro" *ngFor="let livro of livros" (click)="abrirLivro(livro)">
-      <img routerLink="livro" [src]="getImagemLivro(livro)" alt="{{ livro.volumeInfo.title }}">
+      <img routerLink="/livro" [src]="getImagemLivro(livro)" alt="{{ livro.volumeInfo.title }}">
       <h3>{{ livro.volumeInfo.title }}</h3>
       <p>{{ livro.volumeInfo.authors?.join(', ') }}</p>
     </div>
