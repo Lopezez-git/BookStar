@@ -1,0 +1,12 @@
+<div *ngIf="carregando" class="loading">Carregando livros...</div>
+<div *ngIf="erro" class="erro">{{ erro }}</div>
+
+<div class="grid">
+  <div *ngFor="let livro of livros" class="livro" (click)="abrirLivro(livro)">
+    <img
+      [src]="getImagemLivro(livro.volumeInfo)"
+      (error)="onImagemErro($event)"
+      [alt]="livro.volumeInfo.title"
+    />
+  </div>
+</div>
