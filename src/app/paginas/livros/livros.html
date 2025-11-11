@@ -1,7 +1,26 @@
+<div class="pagina-livros">
+  <div class="secao-livros">
+    <h2 class="titulo-secao">📖 Suspense</h2>
+    <app-livros tema="suspense" [maxResults]="12"></app-livros>
+  </div>
 
-<div class="livros-container">
-  <div class="livro" *ngFor="let l of livros">
-    <img [src]="l.imagem" alt="Livro" />
+  <div class="secao-livros">
+    <h2 class="titulo-secao">🏰 Disney</h2>
+    <app-livros tema="disney" [maxResults]="12"></app-livros>
+  </div>
 
+  <div class="secao-livros">
+    <h2 class="titulo-secao">🚀 Ficção Científica</h2>
+    <app-livros tema="ficção científica" [maxResults]="12"></app-livros>
+  </div>
+
+  <div class="secao-livros">
+    <h2 class="titulo-secao">💕 Romance</h2>
+    <app-livros tema="romance" [maxResults]="12"></app-livros>
+  </div>
+
+  <div class="secao-livros">
+    <h2 class="titulo-secao">💻 Tecnologia</h2>
+    <app-livros tema="programação javascript" [maxResults]="12"></app-livros>
   </div>
 </div>

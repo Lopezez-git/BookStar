@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header'; 
 import { FormsModule } from '@angular/forms';
 import { Cadastro } from './paginas/cadastro/cadastro';
-import { Livros } from './paginas/livros/livros'; // 👈 Adicione isso
+import { LivrosComponent } from './paginas/livros/livros'; // 👈 Adicione isso
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import { Livros } from './paginas/livros/livros'; // 👈 Adicione isso
     HeaderComponent, 
     FormsModule, 
     Cadastro,
-    Livros // 👈 Adicione isso
+    LivrosComponent // 👈 Adicione isso
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
