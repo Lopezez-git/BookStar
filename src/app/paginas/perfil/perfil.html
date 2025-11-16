@@ -1,1 +1,80 @@
-<h1>Perfil</h1>
+<main>
+  <div class="background-pattern"></div>
+
+<!-- nao precisa de um header pois está em outro componente :) -->>
+ 
+  <div class="profile-box">
+    <div class="profile-header">
+      <div class="profile-left">
+        <div class="profile-image">
+          <img [src]="perfilImagem || '/assets/default-avatar.png'" alt="Foto de perfil">
+        </div>
+
+        <div class="profile-info">
+          <h1 class="profile-name">{{ nomeUsuario }}</h1>
+          <p class="profile-stats">Seguidores: {{ seguidores }} / Seguindo {{ seguindo }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button 
+        class="tab" 
+        [class.active]="abaAtiva === 'livrosLidos'"
+        (click)="mudarAba('livrosLidos')">
+        Livros Lidos
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="abaAtiva === 'queroLer'"
+        (click)="mudarAba('queroLer')">
+        Quero ler
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="abaAtiva === 'estouLendo'"
+        (click)="mudarAba('estouLendo')">
+        Estou lendo
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="abaAtiva === 'naoFinalizados'"
+        (click)="mudarAba('naoFinalizados')">
+        Não finalizados
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="abaAtiva === 'clubes'"
+        (click)="mudarAba('clubes')">
+        Clubes
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="abaAtiva === 'reviews'"
+        (click)="mudarAba('reviews')">
+        Reviews
+      </button>
+    </div>
+
+    <div class="books-list">
+      <div class="book-item" *ngFor="let livro of livrosFiltrados">
+        <img [src]="livro.capa" [alt]="livro.titulo" class="book-cover">
+        <div class="book-info">
+          <h3 class="book-title">{{ livro.titulo }}</h3>
+          <div class="book-rating">
+            <span 
+              *ngFor="let star of [1,2,3,4,5]" 
+              class="star"
+              [class.filled]="star <= livro.avaliacao">
+              ★
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-books" *ngIf="livrosFiltrados.length === 0">
+        <p>Nenhum livro encontrado nesta categoria.</p>
+      </div>
+    </div>
+  </div>
+</main>
