@@ -21,10 +21,10 @@ interface Livro {
 })
 export class Perfil implements OnInit {
 
-  nomeUsuario = 'Jonathan Bennett';
-  perfilImagem = '';
-  seguidores = 4;
-  seguindo = 4;
+  nomeUsuario: string = '';
+  perfilImagem: string = '';
+  seguidores: number = 0;
+  seguindo: number = 0;
 
   abaAtiva: string = 'livrosLidos';
 
@@ -60,6 +60,8 @@ export class Perfil implements OnInit {
     // Busca dados do perfil do usuário logado
     this.http.get<any>('http://localhost:5010/usuario/perfil').subscribe({
       next: (res) => {
+
+        console.log("Resposta da api: " + res);
         this.nomeUsuario = res.nome;
         this.perfilImagem = res.imagem;
         this.seguidores = res.seguidores;
