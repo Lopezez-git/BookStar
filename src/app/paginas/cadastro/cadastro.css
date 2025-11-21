@@ -18,8 +18,6 @@ html, body {
   pointer-events: none; /*Critico, o backGround estava sobrepondo o formulario por falta disso*/
 }
 
-/*Não precisa do css do header, já tem um componente só pra isso*/
-
 .logo img {
   height: 70px;
 }
