@@ -12,7 +12,7 @@ export const routes: Routes = [
     { path: 'cadastro', component: Cadastro },
     { path: 'login', component: LoginComponent },
     { path: 'livros', component: LivrosComponent },
-    { path: 'livro', component: LivroComponent },
+   { path: 'livro/:id', component: LivroComponent },
     { path: 'perfil', component: Perfil, canActivate: [AuthGuard] }
 
 ];
