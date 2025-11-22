@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "titulo": "A Biblioteca Da Meia Noite",
+    "descricao": "Nora Seed se sente perdida e cheia de arrependimentos. Em um momento de desespero, ela se vê em uma biblioteca misteriosa entre a vida e a morte, onde cada livro representa uma vida que ela poderia ter vivido. Guiada pela bibliotecária, Nora explora possibilidades alternativas de sua existência, descobrindo que pequenas escolhas podem mudar tudo. “A Biblioteca da Meia-Noite” é uma reflexão emocionante sobre arrependimentos, segundas chances e a importância de valorizar a própria vida.",
+    "foto_autor": "/autores/autor1.jpg",
+    "autor": "Matt Haig",
+    "biografiaAutor": "Matt Haig é um escritor e jornalista britânico, nascido em 1975. Autor de romances, livros infantis e obras de não-ficção, ele é conhecido por explorar temas como saúde mental, esperança e a condição humana. Seu trabalho combina fantasia, reflexões profundas e narrativa envolvente, conquistando leitores ao redor do mundo. Entre suas obras mais famosas estão Razões para Continuar Vivo e A Biblioteca da Meia-Noite. Haig também é reconhecido por sua capacidade de tratar assuntos complexos de forma acessível e emocional, inspirando empatia e reflexão.",
+    "capa_livro": "/livros/livro1.png"
+  }
+]

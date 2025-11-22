@@ -7,7 +7,7 @@ import { HeaderComponent } from "../../header/header";
 @Component({
   selector: 'app-livros',
   standalone: true,
-  imports: [CommonModule, RouterLink, HeaderComponent],
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './livros.html',
   styleUrls: ['./livros.css'],
   providers: [LivrosService]

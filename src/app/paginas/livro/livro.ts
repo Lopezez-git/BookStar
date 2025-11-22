@@ -1,8 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { LivrosService } from '../../services/livros.service';
+
+// Importa um JSON local
+import livrosData from '../../../assets/livros.json';
+
+interface Livro {
+  id: string;
+  titulo: string;
+  descricao: string;
+  autor: string;
+  foto_autor: string;
+  biografiaAutor: string;
+  capa_livro?: string;
+}
 
 @Component({
   selector: 'app-livro-detalhes',
@@ -12,23 +24,17 @@ import { LivrosService } from '../../services/livros.service';
   styleUrls: ['./livro.css']
 })
 export class LivroComponent implements OnInit {
-  livro: any = null;
+  livro: Livro | null = null;
   carregando = true;
   erro = '';
-  
-  // Dados do usuário
+
+  // Avaliação do usuário
   avaliacaoUsuario = 0;
+  hoverRating = 0;
   comentarioUsuario = '';
   livroFinalizado = false;
-  
-  // Hover das estrelas
-  hoverRating = 0;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private livrosService: LivrosService
-  ) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -39,35 +45,20 @@ export class LivroComponent implements OnInit {
 
   buscarDetalhesLivro(id: string): void {
     this.carregando = true;
-    this.livrosService.buscarLivros(id).subscribe({
-      next: (res) => {
-        this.livro = res;
-        this.carregando = false;
-      },
-      error: () => {
-        this.erro = 'Erro ao carregar detalhes do livro.';
-        this.carregando = false;
-      }
-    });
+
+    // Procura o livro no JSON local
+    const livroEncontrado = (livrosData as Livro[]).find(l => l.id === id);
+
+    if (livroEncontrado) {
+      this.livro = livroEncontrado;
+      this.carregando = false;
+    } else {
+      this.erro = 'Livro não encontrado.';
+      this.carregando = false;
+    }
   }
 
-  getImagemLivro(): string {
-    return this.livro?.volumeInfo?.imageLinks?.thumbnail || 'assets/placeholder-book.jpg';
-  }
-
-  getAutores(): string {
-    return this.livro?.volumeInfo?.authors?.join(', ') || 'Autor desconhecido';
-  }
-
-  getDescricao(): string {
-    return this.livro?.volumeInfo?.description || 'Sem descrição disponível.';
-  }
-
-  getTitulo(): string {
-    return this.livro?.volumeInfo?.title || 'Título não disponível';
-  }
-
-  // Sistema de avaliação
+  // Avaliação
   setRating(rating: number): void {
     this.avaliacaoUsuario = rating;
   }
@@ -84,26 +75,24 @@ export class LivroComponent implements OnInit {
     return [1, 2, 3, 4, 5];
   }
 
-  // Ações
   toggleFinalizado(): void {
     this.livroFinalizado = !this.livroFinalizado;
   }
 
   salvarAvaliacao(): void {
     if (this.avaliacaoUsuario === 0) {
-      alert('Por favor, selecione uma avaliação!');
+      alert('Selecione uma avaliação!');
       return;
     }
-    
-    // Aqui você vai integrar com o backend do seu amigo
+
     const avaliacao = {
-      livroId: this.livro.id,
+      livroId: this.livro?.id,
       rating: this.avaliacaoUsuario,
       comentario: this.comentarioUsuario,
       finalizado: this.livroFinalizado
     };
-    
-    console.log('Salvando avaliação:', avaliacao);
+
+    console.log('Avaliação salva:', avaliacao);
     alert('Avaliação salva com sucesso!');
   }
 
