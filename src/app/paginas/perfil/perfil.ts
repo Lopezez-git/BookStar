@@ -22,6 +22,7 @@ interface Livro {
 export class Perfil implements OnInit {
 
   nomeUsuario: string = '';
+  username: string = ''; // Adiciona o campo username
   perfilImagem: string = '';
   seguidores: number = 0;
   seguindo: number = 0;
@@ -57,14 +58,34 @@ export class Perfil implements OnInit {
   }
 
   carregarPerfil() {
-    // Busca dados do perfil do usuário logado
+    // Pega os dados do usuário do localStorage
+    const userData = localStorage.getItem('user');
+    
+    if (userData) {
+      const user = JSON.parse(userData);
+      this.nomeUsuario = user.nome || user.name || 'Usuário';
+      this.username = user.username || '';
+      this.perfilImagem = user.imagem_perfil || user.foto || '';
+      this.seguidores = user.seguidores || 0;
+      this.seguindo = user.seguindo || 0;
+    } else {
+      // Dados de exemplo caso não tenha login
+      this.nomeUsuario = 'Lethicia Nobre';
+      this.username = 'lethicia';
+      this.seguidores = 0;
+      this.seguindo = 0;
+    }
+
+    // CÓDIGO DA API (COMENTADO - DEIXAR PARA USAR NO FUTURO)
+    /*
     this.http.get<any>('http://localhost:5010/usuario/perfil').subscribe({
       next: (res) => {
-
-        console.log("Resposta da api: " , res.imagem_perfil);
+        console.log("Resposta da api: ", res);
         this.nomeUsuario = res.nome;
+        this.username = res.username;
         this.perfilImagem = res.imagem_perfil 
-        ? `http://localhost:5010/storage/perfil/${res.imagem_perfil}` : '';
+          ? `http://localhost:5010/storage/perfil/${res.imagem_perfil}` 
+          : '';
         this.seguidores = res.seguidores;
         this.seguindo = res.seguindo;
         this.livros = res.livros || this.livros;
@@ -72,9 +93,9 @@ export class Perfil implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao carregar perfil:', err);
-        // Mantém dados mockados se houver erro
       }
     });
+    */
   }
 
   mudarAba(aba: string) {
@@ -97,7 +118,7 @@ export class Perfil implements OnInit {
         this.livrosFiltrados = this.livros.filter(l => l.status === 'naoFinalizado');
         break;
       case 'clubes':
-        this.livrosFiltrados = []; // Implementar lógica de clubes
+        this.livrosFiltrados = [];
         break;
       case 'reviews':
         this.livrosFiltrados = this.livros.filter(l => l.avaliacao > 0);
