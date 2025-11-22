@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<div class="livros-container">
+  <h1>Livros Populares</h1>
+  <div class="livros-grid">
+    <div class="livro-card" *ngFor="let livro of livrosPopulares">
+      <img [src]="livro.img" alt="Capa do livro">
+    </div>
+  </div>
+</div>
