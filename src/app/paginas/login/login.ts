@@ -18,32 +18,18 @@ export class LoginComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   fazerLogin() {
-    
-   const dadosLogin = {
+    const dadosLogin = {
       email: this.email,
       senha: this.senha
     };
 
-    
     this.http.post('http://localhost:5010/usuario/login', dadosLogin).subscribe({
       next: (res: any) => {
         console.log('Login realizado com sucesso:', res);
         alert(res.mensagem);
 
-        // Salva o token
+        // Salva o token e o usuário
         localStorage.setItem('token', res.token);
-        
-        // Salva os dados do usuário (com username incluído)
-        const userData = {
-          nome: res.usuario.nome || res.usuario.name,
-          username: res.usuario.username || res.usuario.user,
-          email: res.usuario.email,
-          imagem_perfil: res.usuario.imagem_perfil || '',
-          seguidores: res.usuario.seguidores || 0,
-          seguindo: res.usuario.seguindo || 0
-        };
-        
-        localStorage.setItem('user', JSON.stringify(userData));
         localStorage.setItem('usuario', JSON.stringify(res.usuario));
 
         // Redireciona
@@ -54,6 +40,5 @@ export class LoginComponent {
         alert(err.error?.erro || 'Falha no login. Verifique o email e a senha.');
       }
     });
-    
   }
 }
