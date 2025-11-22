@@ -20,7 +20,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/background-star.png'); /* imagem de fundo */
+  background-image: url('/background-star.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -78,86 +78,83 @@ html, body {
   background-color: #395045;
 }
 
-/* Carrossel de livros */
-.books-carousel-section {
-  position: relative;
-  z-index: 2;
-  background-color: #F8F8F5;
-  padding: 50px 0;
-  text-align: center;
-}
-
-.books-carousel-section h2 {
-  color: #333;
-  font-size: 2rem;
-  margin-bottom: 30px;
-}
+/* ---------------------------------------------------- */
+/* ---------------- CARROSÉIS CIRCULARES -------------- */
+/* ---------------------------------------------------- */
 
 .carousel-wrapper {
+  overflow: hidden;
   width: 100%;
-  overflow-x: hidden;
+  margin: 40px 0;
 }
 
 .carousel-track {
   display: flex;
-  gap: 25px;
-  padding: 0 50px;
+  gap: 20px;
+  will-change: transform;
 }
 
-/* Grid de 12 colunas x 2 linhas */
-.carousel-track.grid-12x2 {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 25px;
-  justify-items: center;
-  padding: 0 50px;
+/* Carrossel 1 — direção esquerda */
+.track-left {
+  animation: slide-left 25s linear infinite;
 }
 
-/* Responsivo */
-@media (max-width: 1024px) {
-  .carousel-track.grid-12x2 {
-    grid-template-columns: repeat(6, 1fr);
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-@media (max-width: 768px) {
-  .carousel-track.grid-12x2 {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* Carrossel 2 — direção direita */
+.track-right {
+  animation: slide-right 25s linear infinite;
+}
 
-  .home-content {
-    justify-content: center;
-    padding-left: 0;
-    text-align: center;
+@keyframes slide-right {
+  0% {
+    transform: translateX(-50%);
   }
-
-  .home-text h1 {
-    font-size: 1.8rem;
+  100% {
+    transform: translateX(0);
   }
 }
 
-/* Placeholder */
+/* Item do carrossel */
 .book-item {
+  flex: 0 0 140px;
   width: 140px;
   height: 210px;
-  background-color: #DDD;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  background-color: #DDD;
+  position: relative;
 }
 
+.book-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder durante loading */
 .book-item.placeholder {
   background: linear-gradient(135deg, #E0E0E0 25%, #F5F5F5 100%);
   animation: pulse 1.5s infinite ease-in-out;
 }
 
-/* Efeito de pulsar nos placeholders */
 @keyframes pulse {
   0% { opacity: 1; }
   50% { opacity: 0.6; }
   100% { opacity: 1; }
 }
 
-/* Seção dos desenvolvedores */
+/* ---------------------------------------------------- */
+/* ---------------- SEÇÃO DE DEV ---------------------- */
+/* ---------------------------------------------------- */
+
 .developers-section {
   position: relative;
   background-color: #1C2D27;
@@ -204,26 +201,16 @@ html, body {
   color: #F8F8F5;
   font-weight: 500;
 }
-/* Faixa do carrossel vira linha contínua */
-.carousel-track {
-  display: flex;
-  gap: 20px;
-  animation: scrollLeft 25s linear infinite;
-  will-change: transform;
-}
 
-/* Para garantir rolagem suave */
-.carousel-wrapper {
-  overflow: hidden;
-  width: 100%;
-}
-
-/* Animação do carrossel (movendo para a esquerda sem parar) */
-@keyframes scrollLeft {
-  0% {
-    transform: translateX(0);
+/* Responsivo */
+@media (max-width: 768px) {
+  .home-content {
+    justify-content: center;
+    padding-left: 0;
+    text-align: center;
   }
-  100% {
-    transform: translateX(-50%); /* metade porque duplicamos os livros */
+
+  .home-text h1 {
+    font-size: 1.8rem;
   }
 }

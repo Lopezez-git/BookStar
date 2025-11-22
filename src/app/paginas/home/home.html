@@ -1,7 +1,7 @@
 <div class="home">
   <div class="background-stars"></div>
 
-  <!-- 🌟 Seção principal -->
+  
   <section class="home-content">
     <div class="home-text">
       <h1>Conectando você ao <br> próximo capítulo.</h1>
@@ -9,73 +9,45 @@
     </div>
   </section>
 
-  <!-- 📚 Carrossel 1: Livros Populares -->
-  <section class="books-carousel-section">
-    <div class="carousel-wrapper">
-      <div class="carousel-track">
-        
-        <!-- DUPLICAÇÃO PARA O LOOP INFINITO -->
-        <div *ngFor="let livro of livrosPopulares" class="book-item">
-          <img [src]="
-            livro.volumeInfo.imageLinks?.extraLarge ||
-            livro.volumeInfo.imageLinks?.large ||
-            livro.volumeInfo.imageLinks?.medium ||
-            livro.volumeInfo.imageLinks?.thumbnail ||
-            '/placeholder.jpg'
-          " [alt]="livro.volumeInfo.title" />
+  
+  <!--Spot dos livros-->
+  
 
-          <p class="book-title">{{ livro.volumeInfo.title }}</p>
-        </div>
-
-        <div *ngFor="let livro of livrosPopulares" class="book-item">
-          <img [src]="
-            livro.volumeInfo.imageLinks?.extraLarge ||
-            livro.volumeInfo.imageLinks?.large ||
-            livro.volumeInfo.imageLinks?.medium ||
-            livro.volumeInfo.imageLinks?.thumbnail ||
-            '/placeholder.jpg'
-          " [alt]="livro.volumeInfo.title" />
-
-          <p class="book-title">{{ livro.volumeInfo.title }}</p>
-        </div>
-
+<div class="carousel-wrapper">
+  <div class="carousel-track track-left">
+    <ng-container *ngFor="let livro of livrosPopulares">
+      <div class="book-item">
+        <img [src]="livro.img" alt="Livro Popular">
       </div>
-    </div>
-  </section>
+    </ng-container>
 
-  <!-- 🏆 Carrossel 2: Livros Premiados -->
-  <section class="books-carousel-section">
-    <div class="carousel-wrapper">
-      <div class="carousel-track">
-        
-        <div *ngFor="let livro of livrosPremiados" class="book-item">
-          <img [src]="
-            livro.volumeInfo.imageLinks?.extraLarge ||
-            livro.volumeInfo.imageLinks?.large ||
-            livro.volumeInfo.imageLinks?.medium ||
-            livro.volumeInfo.imageLinks?.thumbnail ||
-            '/placeholder.jpg'
-          " [alt]="livro.volumeInfo.title" />
-
-          <p class="book-title">{{ livro.volumeInfo.title }}</p>
-        </div>
-
-        <!-- DUPLICAÇÃO -->
-        <div *ngFor="let livro of livrosPremiados" class="book-item">
-          <img [src]="
-            livro.volumeInfo.imageLinks?.extraLarge ||
-            livro.volumeInfo.imageLinks?.large ||
-            livro.volumeInfo.imageLinks?.medium ||
-            livro.volumeInfo.imageLinks?.thumbnail ||
-            '/placeholder.jpg'
-          " [alt]="livro.volumeInfo.title" />
-
-          <p class="book-title">{{ livro.volumeInfo.title }}</p>
-        </div>
-
+    <ng-container *ngFor="let livro of livrosPopulares">
+      <div class="book-item">
+        <img [src]="livro.img" alt="Livro Popular">
       </div>
-    </div>
-  </section>
+    </ng-container>
+  </div>
+</div>
+
+
+<div class="carousel-wrapper">
+  <div class="carousel-track track-right">
+    <ng-container *ngFor="let livro of livrosPremiados">
+      <div class="book-item">
+        <img [src]="livro.img" alt="Livro Premiado">
+      </div>
+    </ng-container>
+
+    <ng-container *ngFor="let livro of livrosPremiados">
+      <div class="book-item">
+        <img [src]="livro.img" alt="Livro Premiado">
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+
 
   <!-- Desenvolvedores -->
   <section class="developers-section">
@@ -101,4 +73,4 @@
   </section>
 </div>
 
-<app-header></app-header>
+

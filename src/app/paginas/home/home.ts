@@ -1,51 +1,77 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from "@angular/router";
-import { LivrosService } from '../../services/livros.service';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "../../header/header";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, CommonModule, HeaderComponent],
+  imports: [CommonModule],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
 export class HomeComponent implements OnInit {
+
   livrosPopulares: any[] = [];
   livrosPremiados: any[] = [];
 
-  constructor(private livrosService: LivrosService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.carregarLivros();
-  }
+    // Apenas exemplo — depois você troca pelas imagens reais
 
-  carregarLivros() {
-    // Livros populares
-    this.livrosService.buscarLivros('suspence').subscribe({ // <== filtros
-      next: (res) => {
-        this.livrosPopulares = (res.items || []).filter(
-          (livro: any) =>
-            livro.volumeInfo?.imageLinks?.thumbnail &&
-            livro.volumeInfo?.title &&
-            livro.volumeInfo?.maturityRating !== 'MATURE'
-        );
-      },
-      error: (err) => console.error('Erro ao buscar livros populares:', err)
-    });
+    this.livrosPopulares = [
+      { img: '/livros/livro1.png' },
+      { img: '/livros/livro2.png' },
+      { img: '/livros/livro3.png' },
+      { img: '/livros/livro4.png' },
+      { img: '/livros/livro5.png' },
+      { img: '/livros/livro6.png' },
+      { img: '/livros/livro7.png' },
+      { img: '/livros/livro8.png' },
+      { img: '/livros/livro9.png' },
+      { img: '/livros/livro10.png' },
+      { img: '/livros/livro11.png' },
+      { img: '/livros/livro12.png' },
+      { img: '/livros/livro13.png' },
+      { img: '/livros/livro14.png' },
+      { img: '/livros/livro15.png' },
+      { img: '/livros/livro16.png' },
+      { img: '/livros/livro17.png' },
+      { img: '/livros/livro18.png' },
+      { img: '/livros/livro19.png' },
+      { img: '/livros/livro20.png' },
+      { img: '/livros/livro21.png' },
+      { img: '/livros/livro22.png' },
+      { img: '/livros/livro23.png' },
+      { img: '/livros/livro24.png' },
+      
+    ];
 
-    // Livros premiados
-    this.livrosService.buscarLivros('disney').subscribe({ //<== filtros
-      next: (res) => {
-        this.livrosPremiados = (res.items || []).filter(
-          (livro: any) =>
-            livro.volumeInfo?.imageLinks?.thumbnail &&
-            livro.volumeInfo?.title &&
-            livro.volumeInfo?.maturityRating !== 'MATURE'
-        );
-      },
-      error: (err) => console.error('Erro ao buscar livros premiados:', err)
-    });
+    this.livrosPremiados = [
+      { img: '/livros/livro24.png' },
+      { img: '/livros/livro23.png' },
+      { img: '/livros/livro22.png' },
+      { img: '/livros/livro21.png' },
+      { img: '/livros/livro20.png' },
+      { img: '/livros/livro19.png' },
+      { img: '/livros/livro18.png' },
+      { img: '/livros/livro17.png' },
+      { img: '/livros/livro16.png' },
+      { img: '/livros/livro15.png' },
+      { img: '/livros/livro14.png' },
+      { img: '/livros/livro13.png' },
+      { img: '/livros/livro12.png' },
+      { img: '/livros/livro11.png' },
+      { img: '/livros/livro10.png' },
+      { img: '/livros/livro9.png' },
+      { img: '/livros/livro8.png' },
+      { img: '/livros/livro7.png' },
+      { img: '/livros/livro6.png' },
+      { img: '/livros/livro5.png' },
+      { img: '/livros/livro4.png' },
+      { img: '/livros/livro3.png' },
+      { img: '/livros/livro2.png' },
+      { img: '/livros/livro1.png' },
+
+    ];
   }
 }
