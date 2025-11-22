@@ -61,9 +61,10 @@ export class Perfil implements OnInit {
     this.http.get<any>('http://localhost:5010/usuario/perfil').subscribe({
       next: (res) => {
 
-        console.log("Resposta da api: " + res);
+        console.log("Resposta da api: " , res.imagem_perfil);
         this.nomeUsuario = res.nome;
-        this.perfilImagem = res.imagem;
+        this.perfilImagem = res.imagem_perfil 
+        ? `http://localhost:5010/storage/perfil/${res.imagem_perfil}` : '';
         this.seguidores = res.seguidores;
         this.seguindo = res.seguindo;
         this.livros = res.livros || this.livros;
